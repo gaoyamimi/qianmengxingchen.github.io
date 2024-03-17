@@ -1,10 +1,11 @@
 # 介绍
 
-这里是权酱托管在 Github 的个人网站
+这里是权酱在 Github 的个人网站
+页面已经重新编写尚未完成
 
-## 本页面已经已经使用了 Vue3 使用 Vite 作为脚手架
+## 本页面已经已经使用 Vue3 + Vite 构建
 
-### 主页界面
+### 主页界面（旧）
 
 xiaoqvan 自写个人主页
 ![主页](/screenshots/1.png)
@@ -16,26 +17,30 @@ xiaoqvan 自写个人主页
 ### 功能
 
 - [x] Hitokoto 一言
-- [x] 日期及时间
-- [x] 实时天气
-- [x] 音乐播放器
-- [ ] 移动端完全适配 
-- [ ] 番剧内容（尚未完全）
+- [ ] 移动端适配
+- [ ] 博客
+- [ ] 游戏展示
+- [x] 番剧内容
+- [ ] 快速配置
 
 ### 番剧
 
-番剧页面使用本人自写 Python 脚本加 Github Actions 实现每天实时更新。
-感谢[弹弹 play 开放平台](https://github.com/kaedei/dandanplay-libraryindex/blob/master/api/OpenPlatform.md)的 API 接口
+感谢[Bangumi](https://github.com/bangumi/api)的 API 接口
 
 # 构建
 
 克隆本项目
+
 ```bush
 //安装依赖
 npm install
 //构建
 npm run build
 //推送到分支gh-pages
-//vite.config.ts修改仓库名称如果使用<USERNAME>.github.io不用修改
-npm run deploy
+//vite.config.js修改仓库名称如果使用<USERNAME>.github.io不用修改
+git add dist -f
+git commit -m "推送到gh-pages"
+git subtree split --prefix dist -b gh-pages-temp
+git push -f origin gh-pages-temp:gh-pages
+git branch -D gh-pages-temp
 ```

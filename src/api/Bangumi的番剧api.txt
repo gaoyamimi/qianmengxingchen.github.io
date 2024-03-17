@@ -1,0 +1,47 @@
+番剧api接口
+接口地址 ：https://api.bgm.tv/calendar
+返回内容，部分解释，其他同理。
+        "weekday": {
+            "en": "Mon", <=en区日期
+            "cn": "星期一", <=cn区日期
+            "ja": "月耀日", <=jp区日期
+            "id": 1 <=cn区星期代码
+        },
+        "items": [
+            {
+                "id": 350235, <=番剧id
+                "url": "http://bgm.tv/subject/350235", <=番剧详细url
+                "type": 2, <=类型 2为anime
+                "name": "月が導く異世界道中 第二幕",  <=番剧原名
+                "name_cn": "月光下的异世界之旅 第二幕", <=番剧中文名
+                "summary": "",  <=没有为空
+                "air_date": "2024-01-08",  <=放送时间
+                "air_weekday": 1,  <=更新星期代码
+                "rating": {       <=评分
+                    "total": 245,  <=总评人数
+                    "count": {
+                        "1": 1,    <=1星人数
+                        "2": 1,    <=2星人数
+                        "3": 4,    <=3星人数
+                        "4": 15,   <=4星人数
+                        "5": 49,   <=5星人数
+                        "6": 106,  <=6星人数
+                        "7": 47,   <=7星人数
+                        "8": 13,   <=8星人数
+                        "9": 3,    <=9星人数
+                        "10": 6    <=10星人数
+                    },
+                    "score": 6     <=平均分
+                },
+                "rank": 6185,      <=排名
+                "images": {        <=封面
+                    "large": "http://lain.bgm.tv/pic/cover/l/3c/a5/350235_A0USf.jpg",  <=大
+                    "common": "http://lain.bgm.tv/pic/cover/c/3c/a5/350235_A0USf.jpg", <=中
+                    "medium": "http://lain.bgm.tv/pic/cover/m/3c/a5/350235_A0USf.jpg", <=小
+                    "small": "http://lain.bgm.tv/pic/cover/s/3c/a5/350235_A0USf.jpg",  <=非常小
+                    "grid": "http://lain.bgm.tv/pic/cover/g/3c/a5/350235_A0USf.jpg"    <=网格
+                },
+                "collection": {
+                    "doing": 900 <=在看人数
+                }
+            },]
