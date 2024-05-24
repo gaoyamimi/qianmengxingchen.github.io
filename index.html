@@ -1,18 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>踏浪逐行的主页</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/fanjv.css">
+    <link rel="stylesheet" href="css/media.css">
     <!-- FontAwesome图标库 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
-    <title>xiaoqvan的个人主页</title>
+    <!-- 引入jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Izitoast -->
+    <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-y/izitoast/1.4.0/css/iziToast.min.css">
+    <script type="text/javascript"
+        src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-y/izitoast/1.4.0/js/iziToast.min.js"></script>
+    <!-- 主js -->
+    <script src="js/main.js"></script>
+    <!-- 明月浩空音乐播放器 -->
+    <script src="js/music.js"></script>
+    <!-- 随机背景 -->
+    <script src="js/bg.js"></script>
+    <!-- 番剧 -->
+    <script src="js/fanjv.js"></script>
 </head>
 
 <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <!-- 背景 -->
+    <div class="bg-all">
+        <img id="bg" onerror="this.classList.add('error');"
+            src="https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOnU6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VabnhPZXVLMkJKRW5EQkpGdC1Xd0lnQkU5cmZ0Mnhpd2NMNUpaRTQxQnk3OGc_ZT1KZ2lnWW8.webp"
+            alt="bg">
+        <!-- 下方为背景灰色蒙版 -->
+        <!-- <div class="overlay"></div> -->
+    </div>
+    <div class="main-all">
+        <div class="main">
+            <!-- 第一屏 -->
+            <div class="tx-all">
+                <!-- 基本信息 -->
+                <div class="tx">
+                    <img src="https://dlink.host/sharepoint/aHR0cHM6Ly9tZW5taWFvY3ktbXkuc2hhcmVwb2ludC5jb20vOmk6L2cvcGVyc29uYWwveGlhb3F2YW5fMzY1X21lbmdhY2dfY29tL0VYV0U5TjAzS2tSS3ByRmZkd2JFVzJBQkVnaVN4ZFRyb1pLZ3c0T0RBMHdqZ0E.jpg"
+                        alt="">
+                    <h1>浅梦星辰</h1>
+                    <div class="tx-content">
+                        <p>这里是浅梦</p>
+                        <p>欢迎来到我的个人主页</p>
+                    </div>
+                </div>
+                <!-- 一言 -->
+                <div class="hitokoto-all" id="hitokoto-content">
+                    <div class="hitokoto-text"><span id="hitokoto_text">浅梦是个大吃货</span></div>
+                    <div class="hitokoto-from">-「 <span id="from_text">踏浪逐行</span> 」</div>
+                </div>
+                <!--社交链接-->
+                <div class="relation">
+                    <div>
+                        <a href="https://qm.qq.com/q/xwIReHzTLG" title="添加QQ">
+                            <i class="fa-brands fa-qq"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://space.bilibili.com/171896697" title="bilibili">
+                            <i class="fa-brands fa-bilibili"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://github.com/XQxiaoqvan" title="前往GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://twitter.com/xiao_qvan668" title="前往x-twitter">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://t.me/ppx114514" title="前往Telegram">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 第二屏 -->
+            <div class="main-2">
+                <!-- 番剧 -->
+                <div class="fanjv">
+                    <div id="fanjv" class="fanjv-timeshow">
+                    </div>
+                </div>
+            </div>
+            <!-- 第三屏 -->
+            <div class="main-3">
+                <!-- 时间 -->
+                <div class="timeshow" id="time">
+                    <span class="time-text">00:00:00</span>
+                    <div class="time-info">
+                        <span> 0000&nbsp;年&nbsp;0&nbsp;月&nbsp;00&nbsp;日&nbsp;</span>
+                        <span class="weekday">星期一</span>
+                    </div>
+                </div>
+                <!-- 音乐播放器 -->
+                <div class="music-bfq">
+                    <div>
+                        <img id="album-art" src="https://via.placeholder.com/150?text=%20" alt="album-art">
+                    </div>
+                    <div class="music-content">
+                        <div class="music-info">
+                            <h1 class="player-info">音乐播放器 - 加载中</h1>
+                        </div>
+                        <div class="music-button">
+                            <i class="fas fa-step-backward fa-xs" onclick="handlePrevButtonClick()"></i>
+                            <i class="fas fa-play fa-xs" onclick="handlePlayButtonClick()"></i>
+                            <i class="fas fa-pause fa-xs" onclick="handlePauseButtonClick()"></i>
+                            <i class="fas fa-step-forward fa-xs" onclick="handleNextButtonClick()"></i>
+                        </div>
+                        <div class="music-progress">
+                            <progress class="music-progress-bar" id="musicprogress-bar" value="0" max="100"></progress>
+                        </div>
+                    </div>
+                </div>
+                <!-- 歌词 -->
+                <div class="lyric">
+                    <div class="color-text">
+                        <span id="lyric_text">加载中</span>
+                    </div>
+                </div>
+                <!-- 天气 -->
+                <div class="weather">
+                    <div class="weather-icon">
+                        <img id="weather-icon" src="https://weather.cma.cn/static/img/w/icon/w0.png" alt="weather">
+                    </div>
+                    <div class="weather-content">
+                        <span id="city_text">天气</span>&nbsp;
+                        <span id="wea_text">加载</span>&nbsp;
+                        <span id="tem_text"></span>
+                        <span id="win_text">失败</span>
+                        <span id="win_speed"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 手机切换按钮 -->
+        <div class="media-switchover">
+            <div class="fanjv-switchover">
+                <p>番剧</p>
+            </div>
+            <div class="music-switchover">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </div>
+    <!-- 底部栏 -->
+    <footer>
+        <!-- 版权信息 -->
+        <span id="power">Copyright&nbsp;&copy;
+            <script>
+                document.write((new Date()).getFullYear());
+            </script>
+            <!-- 下面取消注释填写你的个人信息 -->
+            <!-- <a href="#" id="power-text">xiaoqvan</a> -->
+        </span>
+        <!-- 这里为网站模板作者信息，以下信息请不要修改哦 -->
+        <span class="made" id="made">&nbsp;&amp;&nbsp;Made&nbsp;by&nbsp;<a rel="noopener" href="https://github.com/gaoyamimi/qianmengxingchen.github.io
+" target="_blank">浅梦星辰</a></span>
+        <!-- 备案信息 -->
+        <a rel="noopener" href="https://beian.miit.gov.cn" id="beian"
+            target="_blank">&nbsp;&amp;&nbsp;蜀ICP备2023029793号-1</a>
+    </footer>
 </body>
+
 
 </html>
